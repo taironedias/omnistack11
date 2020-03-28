@@ -2,7 +2,7 @@
 /node_modules
 
 # database sqlite
-/src/database/db.sqlite
+/src/database/*.sqlite
 
 #vscode workspace
 code.code-workspace
