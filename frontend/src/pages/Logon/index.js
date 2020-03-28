@@ -10,6 +10,8 @@ import logoImg from '../../assets/logo.svg';
 export default function Logon() {
 
     const [id, setId] = useState('');
+    const [classError, setClassError] = useState('');
+    const [messageErrorLogin, setMessageErrorLogin] = useState('');
 
     const history = useHistory();
 
@@ -24,7 +26,10 @@ export default function Logon() {
 
             history.push('/profile');
         } catch (err) {
-            alert('Erro ao fazer o login.');
+            setMessageErrorLogin('Login inválido, tente novamente!');
+            setClassError('error');
+            setId('');
+            // alert('Erro ao fazer o login.');
         }
     }
 
@@ -35,10 +40,12 @@ export default function Logon() {
                 <form onSubmit={handleLogin}>
                     <h1>Faça seu logon</h1>
                     <input 
+                        className={classError}
                         placeholder="Seu ID" 
                         value={id}
                         onChange={e => setId(e.target.value)}
                     />
+                    <span className={classError}>{messageErrorLogin}</span>
                     <button className="button" type="submit">Entrar</button>
 
                     <Link className="custom-link" to="/register">

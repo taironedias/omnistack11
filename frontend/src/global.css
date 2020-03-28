@@ -30,6 +30,20 @@ form input {
     padding: 0 24px;
 }
 
+form input.error {
+    border: 1px solid #E02041;
+}
+
+form input.error::placeholder {
+    color: #E02041;
+}
+
+form span.error {
+    color: #E02041;
+    font-style: italic;
+    line-height: 30px;
+}
+
 form textarea {
     width: 100%;
     min-height: 140px;
