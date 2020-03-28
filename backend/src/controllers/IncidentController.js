@@ -40,6 +40,11 @@ module.exports = {
         const { id } = request.params;
         const ong_id = request.headers.authorization;
 
+        const idExists = await connection('incidents').where('id', id).first();
+        if (!idExists) {
+            return response.status(404).json({ error : 'ID not found' });
+        }
+
         const incident = await connection('incidents')
             .select('ong_id')
             .where('id',id)
